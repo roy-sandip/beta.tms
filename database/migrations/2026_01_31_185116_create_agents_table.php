@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
-            $table->integer('branch_id');
+            $table->integer('parent_id');
             $table->string('company');
             $table->string('contact_person')->nullable();
             $table->string('email')->nullable();
             $table->string('contact')->nullable();
             $table->string('address')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->boolean('has_notification')->default(false);
             $table->timestamps();
-            $table->index(['branch_id']);
+            $table->index(['parent_id']);
         });
     }
 
