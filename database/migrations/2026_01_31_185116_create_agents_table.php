@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->boolean('is_active')->default(true);
             $table->boolean('has_notification')->default(false);
+            $table->boolean('has_sub_agent')->default(false);
             $table->timestamps();
             $table->index(['parent_id']);
         });

@@ -17,9 +17,8 @@ return new class extends Migration
             $table->integer('shipper_address_id'); //FK
             $table->integer('receiver_address_id'); //FK
             $table->integer('customer_id')->nullable(); //FK
-            $table->integer('origin_branch_id'); //FK 
             $table->integer('service_id')->nullable(); //FK
-            $table->integer('agent_id')->nullable(); //FK
+            $table->integer('agent_id'); //FK
             $table->integer('sub_agent_id')->nullable(); //FK
 
 
@@ -36,8 +35,9 @@ return new class extends Migration
             $table->timestamp('received_at')->useCurrent();
             $table->timestamp('est_delivery')->nullable();
 
+            $table->integer('user_id');
             $table->timestamps();
-            $table->index(['shipper_address_id', 'receiver_address_id', 'customer_id', 'agent_id', 'service_id'],
+            $table->index(['shipper_address_id', 'receiver_address_id', 'customer_id', 'agent_id', 'sub_agent_id', 'service_id'],
                         'shipments_lookup_idx'
                     );
 
